@@ -21,6 +21,7 @@
       "type": "string"
     },
     "user": {
+      "private": true,
       "plugin": "users-permissions",
       "model": "user",
       "via": "words"
