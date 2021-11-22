@@ -21,10 +21,14 @@
       "type": "string"
     },
     "user": {
-      "private": true,
+      "via": "words",
       "plugin": "users-permissions",
-      "model": "user",
-      "via": "words"
+      "private": true,
+      "model": "user"
+    },
+    "dictionary": {
+      "via": "words",
+      "model": "dictionaries"
     }
   }
 }

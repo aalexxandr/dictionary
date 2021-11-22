@@ -1,0 +1,43 @@
+{
+  "kind": "collectionType",
+  "collectionName": "dictionaries",
+  "info": {
+    "name": "dictionaries",
+    "description": ""
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "name": {
+      "type": "string",
+      "required": true,
+      "maxLength": 100,
+      "minLength": 1
+    },
+    "owner": {
+      "plugin": "users-permissions",
+      "model": "user",
+      "via": "dictionaries_own"
+    },
+    "words": {
+      "collection": "words",
+      "via": "dictionary"
+    },
+    "viewers": {
+      "via": "dictionaries_view",
+      "plugin": "users-permissions",
+      "collection": "user",
+      "dominant": true
+    },
+    "editors": {
+      "via": "dictionaries_edit",
+      "plugin": "users-permissions",
+      "collection": "user",
+      "dominant": true
+    }
+  }
+}
