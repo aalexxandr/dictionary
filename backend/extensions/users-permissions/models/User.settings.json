@@ -59,10 +59,6 @@
       "plugin": "users-permissions",
       "configurable": false
     },
-    "words": {
-      "via": "user",
-      "collection": "words"
-    },
     "dictionaries_edit": {
       "via": "editors",
       "collection": "dictionaries"

@@ -20,12 +20,6 @@
     "translation": {
       "type": "string"
     },
-    "user": {
-      "via": "words",
-      "plugin": "users-permissions",
-      "private": true,
-      "model": "user"
-    },
     "dictionary": {
       "via": "words",
       "model": "dictionaries"

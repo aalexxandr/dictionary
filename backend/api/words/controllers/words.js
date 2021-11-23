@@ -7,6 +7,8 @@ const {sanitizeEntity} = require("strapi-utils");
  * to customize this controller
  */
 
+const sanitizeWord = (word) => sanitizeEntity(word, {model: strapi.models.words})
+
 module.exports = {
   find: async ctx => {
     const {id} = ctx.state.user
@@ -16,7 +18,7 @@ module.exports = {
       user: id,
     })
 
-    return entities.map(entity => sanitizeEntity(entity, {model: strapi.models.words}))
+    return entities.map(entity => sanitizeWord(entity))
   },
   delete: async ctx => {
     const {id} = ctx.state.user
@@ -27,7 +29,7 @@ module.exports = {
       id: wordId, user: id
     })
 
-    return sanitizeEntity(entity, {model: strapi.models.words})
+    return sanitizeWord(entity)
   },
   update: async ctx => {
     const { id } = ctx.params
@@ -35,6 +37,11 @@ module.exports = {
 
     const entity = await strapi.services.words.update({id, user: userId}, ctx.request.body)
 
-    return sanitizeEntity(entity, { model: strapi.models.words });
+    return sanitizeWord(entity)
   },
+  create: async ctx => {
+    const entity = await strapi.services.words.create(ctx.request.body)
+
+    return sanitizeWord(entity)
+  }
 };

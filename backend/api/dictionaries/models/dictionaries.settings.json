@@ -24,8 +24,8 @@
       "via": "dictionaries_own"
     },
     "words": {
-      "collection": "words",
-      "via": "dictionary"
+      "via": "dictionary",
+      "collection": "words"
     },
     "viewers": {
       "via": "dictionaries_view",
