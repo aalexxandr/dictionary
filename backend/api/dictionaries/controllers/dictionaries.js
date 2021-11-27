@@ -8,7 +8,7 @@ module.exports = {
   create: async ctx => {
     const {id} = ctx.state.user
 
-    const entity = await strapi.services.dictionaries.create({...ctx.request.body, owner: id})
+    const entity = await strapi.services.dictionaries.create({...ctx.request.body, owner: id, editors: id})
 
     return sanitizeDictionary(entity)
   },
