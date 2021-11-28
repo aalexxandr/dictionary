@@ -6,6 +6,19 @@
  */
 
 module.exports = {
+  find: async ctx => {
+    const userId = ctx.state.user.id
+
+    const {dictionaryId} = ctx.params
+
+    const entity = await strapi.services.dictionaries.findOne({
+      viewers: userId,
+      id: dictionaryId,
+      _sort: 'created_at:asc',
+    })
+
+    return entity?.words.map(word => strapi.services.words.sanitizeWord(word))
+  },
   create: async ctx => {
     const userId = ctx.state.user.id
 
@@ -39,16 +52,6 @@ module.exports = {
     }
 
     return null
-  },
-  find: async ctx => {
-    const {id} = ctx.state.user
-
-    const entities = await strapi.services.words.find({
-      _sort: 'created_at:asc',
-      user: id,
-    })
-
-    return entities.map(entity => strapi.services.words.sanitizeWord(entity))
   },
   delete: async ctx => {
     const userId = ctx.state.user.id
