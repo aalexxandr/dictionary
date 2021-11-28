@@ -34,7 +34,7 @@
     },
     {
       "method": "PUT",
-      "path": "/dictionaries/:id",
+      "path": "/dictionaries/:dictionaryId",
       "handler": "dictionaries.update",
       "config": {
         "policies": []
@@ -42,7 +42,7 @@
     },
     {
       "method": "DELETE",
-      "path": "/dictionaries/:id",
+      "path": "/dictionaries/:dictionaryId",
       "handler": "dictionaries.delete",
       "config": {
         "policies": []
