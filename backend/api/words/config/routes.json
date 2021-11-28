@@ -34,7 +34,7 @@
     },
     {
       "method": "PUT",
-      "path": "/words/:id",
+      "path": "/words/:dictionaryId/:wordId",
       "handler": "words.update",
       "config": {
         "policies": []
@@ -42,7 +42,7 @@
     },
     {
       "method": "DELETE",
-      "path": "/words/:id",
+      "path": "/words/:dictionaryId/:wordId",
       "handler": "words.delete",
       "config": {
         "policies": []
