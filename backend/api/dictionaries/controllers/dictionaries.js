@@ -10,6 +10,7 @@ module.exports = {
       name,
       owner: userId,
       editors: userId,
+      viewers: userId,
     })
 
     return strapi.services.dictionaries.sanitizeDictionary(entity)
