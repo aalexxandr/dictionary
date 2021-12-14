@@ -12,7 +12,7 @@ const Auth = () => {
 
     return (
         <form action="" onSubmit={handleSubmit(login)}>
-            ЖОПА
+            ХЕРНЯ
             <label htmlFor="login">Login</label>
             <input type="text" id="login" {...register('login')}/>
 
