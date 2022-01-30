@@ -1,15 +1,25 @@
+import {getCookie} from "../../lib/utils/cookies";
+
 const initialState = {
-    userJwtToken: null,
-    userName: null
+    userId: getCookie('userId') || null,
+    userJwt: getCookie('userJwt') || null,
+    userName: getCookie('userName') || null,
+    userEmail: getCookie('userEmail') || null,
 }
 
-const SIGN_IN = 'SIGN_IN'
+const SET_USER = 'SET_USER'
+export const SIGN_IN = 'SIGN_IN'
 
 export const signReducer = (state = initialState, action) => {
     switch (action.type) {
-        case SIGN_IN: {
+        case SET_USER: {
+            const {userId, userJwt, userName, userEmail} = action.payload
             return {
-                ...state
+                ...state,
+                userId,
+                userJwt,
+                userName,
+                userEmail,
             }
         }
         default: {
@@ -19,3 +29,4 @@ export const signReducer = (state = initialState, action) => {
 }
 
 export const signInCreator = (payload) => ({type: SIGN_IN, payload})
+export const setUserCreator = (payload) => ({type: SET_USER, payload})

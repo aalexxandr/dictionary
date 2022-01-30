@@ -1,9 +1,9 @@
 import React from 'react';
-import Auth from "./Auth";
+import SignIn from "./SignIn";
 
 function App() {
     return (
-        <Auth/>
+        <SignIn/>
     );
 }
 
