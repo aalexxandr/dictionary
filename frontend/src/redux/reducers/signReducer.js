@@ -3,11 +3,11 @@ const initialState = {
     userName: null
 }
 
-const AUTH = 'AUTH'
+const SIGN_IN = 'SIGN_IN'
 
-export const userReducer = (state = initialState, action) => {
+export const signReducer = (state = initialState, action) => {
     switch (action.type) {
-        case AUTH: {
+        case SIGN_IN: {
             return {
                 ...state
             }
@@ -18,4 +18,4 @@ export const userReducer = (state = initialState, action) => {
     }
 }
 
-export const authCreator = (payload) => ({type: AUTH, payload})
+export const signInCreator = (payload) => ({type: SIGN_IN, payload})
