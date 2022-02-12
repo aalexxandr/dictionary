@@ -1,10 +1,17 @@
 import React from 'react';
-import Auth from "./Auth";
+import SignIn from "./SignIn";
+import Profile from "./Profile";
+import {useSelector} from "react-redux";
 
 function App() {
-    return (
-        <Auth/>
-    );
+    const signStore = useSelector(store => store.sign)
+
+    return <>
+        {signStore?.userName
+            ? <Profile userName={signStore.userName} />
+            : <SignIn />
+        }
+    </>
 }
 
 export default App;
