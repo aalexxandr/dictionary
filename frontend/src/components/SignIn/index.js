@@ -1,6 +1,6 @@
 import {useDispatch} from "react-redux";
 import {useForm} from "react-hook-form";
-import {signInCreator} from "../../redux/reducers/userReducer";
+import {signInCreator} from "../../redux/reducers/signReducer";
 
 const SignIn = () => {
     const dispatch = useDispatch()

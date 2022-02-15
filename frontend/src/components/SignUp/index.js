@@ -1,15 +1,14 @@
 import {useDispatch} from "react-redux";
 import {useForm} from "react-hook-form";
-import {registrationCreator} from "../../redux/reducers/userReducer";
+import {signUpCreator} from "../../redux/reducers/signReducer";
 
-const Registration = () => {
+const SignUp = () => {
     const dispatch = useDispatch()
 
     const {handleSubmit, register} = useForm()
 
     const regUser = data => {
-        console.log(data);
-        dispatch(registrationCreator(data))
+        dispatch(signUpCreator(data))
     }
 
     return (
@@ -28,4 +27,4 @@ const Registration = () => {
     )
 }
 
-export default Registration
+export default SignUp

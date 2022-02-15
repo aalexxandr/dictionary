@@ -1,7 +1,7 @@
-import { signIn, reg } from "../../lib/api/user";
+import { signIn, signUp } from "../../lib/api/sign";
 import { setCookie } from "../../lib/utils/cookies";
 import { takeLeading, put } from "redux-saga/effects";
-import { SIGN_IN, REGISTER, setUserCreator } from "../reducers/userReducer";
+import { SIGN_IN, SIGN_UP, setUserCreator } from "../reducers/signReducer";
 
 /* sagas workers */
 
@@ -28,9 +28,9 @@ function* signInWorker({payload}) {
 
 }
 
-function* registrationWorker({payload}) {
+function* signUpWorker({payload}) {
     try {
-        const result = yield reg(payload)
+        const result = yield signUp(payload)
 
         const data = {
             'userJwt': result.jwt,
@@ -56,6 +56,6 @@ export function* watchSignIn() {
     yield takeLeading(SIGN_IN, signInWorker)
 }
 
-export function* watchRegistration() {
-    yield takeLeading(REGISTER, registrationWorker)
+export function* watchSignUp() {
+    yield takeLeading(SIGN_UP, signUpWorker)
 }
