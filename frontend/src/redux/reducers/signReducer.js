@@ -9,6 +9,7 @@ const initialState = {
 
 const SET_USER = 'SET_USER'
 export const SIGN_IN = 'SIGN_IN'
+export const SIGN_UP = 'SIGN_UP'
 
 export const signReducer = (state = initialState, action) => {
     switch (action.type) {
@@ -29,4 +30,5 @@ export const signReducer = (state = initialState, action) => {
 }
 
 export const signInCreator = (payload) => ({type: SIGN_IN, payload})
+export const signUpCreator = (payload) => ({type: SIGN_UP, payload})
 export const setUserCreator = (payload) => ({type: SET_USER, payload})
