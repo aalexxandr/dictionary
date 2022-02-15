@@ -7,12 +7,12 @@ const SignUp = () => {
 
     const {handleSubmit, register} = useForm()
 
-    const regUser = data => {
+    const signUp = data => {
         dispatch(signUpCreator(data))
     }
 
     return (
-        <form action='' onSubmit={handleSubmit(regUser)}>
+        <form action='' onSubmit={handleSubmit(signUp)}>
             <label htmlFor='username'>Username</label>
             <input type='text' id='username' {...register('username')}/>
 
