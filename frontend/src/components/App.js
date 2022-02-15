@@ -2,6 +2,7 @@ import React from 'react';
 import SignIn from "./SignIn";
 import Profile from "./Profile";
 import {useSelector} from "react-redux";
+import Registration from './Registration';
 
 function App() {
     const signStore = useSelector(store => store.sign)
