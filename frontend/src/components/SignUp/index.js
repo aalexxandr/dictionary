@@ -1,6 +1,6 @@
 import {useDispatch} from "react-redux";
 import {useForm} from "react-hook-form";
-import {signUpCreator} from "../../redux/reducers/signReducer";
+// import {signUpCreator} from "../../redux/reducers/signReducer";
 
 const SignUp = () => {
     const dispatch = useDispatch()
@@ -8,7 +8,7 @@ const SignUp = () => {
     const {handleSubmit, register} = useForm()
 
     const signUp = data => {
-        dispatch(signUpCreator(data))
+        // dispatch(signUpCreator(data))
     }
 
     return (

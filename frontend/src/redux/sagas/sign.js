@@ -1,6 +1,6 @@
-import { signIn, signUp, signIn } from "../../lib/api/sign";
+import { signIn, signUp } from "../../lib/api/sign";
 import { takeLeading, put } from "redux-saga/effects";
-import { SIGN_IN, SIGN_UP, setUserCreator } from "../reducers/signReducer";
+// import { SIGN_UP } from "../reducers/signReducer";
 import {SignActionTypes} from "../../types/sign";
 import {removeCookie, setCookie} from "../../lib/utils/cookies";
 
@@ -69,5 +69,5 @@ export function* watchSignOut() {
 }
 
 export function* watchSignUp() {
-    yield takeLeading(SIGN_UP, signUpWorker)
+    // yield takeLeading(SIGN_UP, signUpWorker)
 }
