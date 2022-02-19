@@ -1,7 +1,5 @@
-import {all} from 'redux-saga/effects';
-import {watchSignIn, watchSignUp} from "./sign";
 import {all, spawn} from 'redux-saga/effects';
-import {watchSignIn, watchSignOut} from "./sign";
+import {watchSignIn, watchSignUp, watchSignOut} from "./sign";
 
 export function* rootWatcher() {
     yield all([
