@@ -10,7 +10,7 @@ import {setUserCreator} from "../reducers/sign";
 function* signInWorker({payload}) {
     const {identifier, password} = payload
     try {
-        const result = yield signIn(identifier, password)
+        const result = yield signIn({identifier, password})
 
         const data = {
             'userJwt': result.jwt,
@@ -31,8 +31,9 @@ function* signInWorker({payload}) {
 }
 
 function* signUpWorker({payload}) {
+    const {username, email, password} = payload
     try {
-        const result = yield signUp(payload)
+        const result = yield signUp({username, email, password})
 
         const data = {
             'userJwt': result.jwt,
@@ -55,7 +56,7 @@ function* signUpWorker({payload}) {
 function* signOutWorker() {
     const data = ['userJwt', 'userId', 'userEmail', 'userName']
 
-    Object.keys(data).forEach(key => {
+    yield Object.keys(data).forEach(key => {
         removeCookie(key)
     })
 }
@@ -70,5 +71,5 @@ export function* watchSignOut() {
 }
 
 export function* watchSignUp() {
-    // yield takeLeading(SIGN_UP, signUpWorker)
+    yield takeLeading(SignActionTypes.SIGN_UP, signUpWorker)
 }

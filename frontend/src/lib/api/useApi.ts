@@ -17,7 +17,7 @@ export const request = async (method: method, url: string, data: object = {}) =>
             method,
             headers,
             url: `${API_URL}${url}`,
-            data: method === 'GET' && data,
+            data: method === 'POST' && data,
             params: method === 'GET' && data,
         })
 

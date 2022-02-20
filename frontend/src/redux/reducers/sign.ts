@@ -6,7 +6,9 @@ import {
     IUser,
     ISetUserAction,
     ISignInAction,
-    ISignInPayload
+    ISignInPayload, 
+    ISignUpAction,
+    ISignUpPayload
 } from "../../types/sign";
 
 const initialState: ISignState = {
@@ -51,4 +53,5 @@ export const sign = (state = initialState, action: SignAction): ISignState => {
 }
 
 export const signInCreator = (payload:ISignInPayload):ISignInAction => ({type: SignActionTypes.SIGN_IN, payload})
+export const signUpCreator = (payload:ISignUpPayload):ISignUpAction => ({type: SignActionTypes.SIGN_UP, payload})
 export const setUserCreator = (payload:IUser):ISetUserAction => ({type: SignActionTypes.SET_USER, payload})

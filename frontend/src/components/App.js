@@ -6,10 +6,10 @@ import SignUp from './SignUp';
 
 function App() {
     const signStore = useSelector(store => store.sign)
-
+    
     return <>
-        {signStore?.userName
-            ? <Profile userName={signStore.userName} />
+        {signStore.user?.userName
+            ? <Profile userName={signStore.user?.userName} />
             : <SignIn />
         }
     </>

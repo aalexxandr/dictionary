@@ -5,6 +5,6 @@ export function* rootWatcher() {
     yield all([
         spawn(watchSignIn),
         spawn(watchSignOut),
-        spawn(watchSignUp()),
+        spawn(watchSignUp),
     ])
 }

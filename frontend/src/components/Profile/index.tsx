@@ -1,10 +1,10 @@
 import {FC} from "react";
 
-interface Profile {
+interface IProfile {
     userName: string
 }
 
-const Profile:FC<Profile> = ({userName}) => {
+const Profile:FC<IProfile> = ({userName}) => {
     return (
         <div>
             Hello, {userName}
