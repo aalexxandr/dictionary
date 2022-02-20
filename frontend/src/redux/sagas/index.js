@@ -4,7 +4,7 @@ import {watchSignIn, watchSignUp, watchSignOut} from "./sign";
 export function* rootWatcher() {
     yield all([
         spawn(watchSignIn),
-        spawn(watchSignOut),
         spawn(watchSignUp),
+        spawn(watchSignOut),
     ])
 }

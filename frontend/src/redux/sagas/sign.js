@@ -1,6 +1,5 @@
 import { signIn, signUp } from "../../lib/api/sign";
 import { takeLeading, put } from "redux-saga/effects";
-// import { SIGN_UP } from "../reducers/signReducer";
 import {SignActionTypes} from "../../types/sign";
 import {removeCookie, setCookie} from "../../lib/utils/cookies";
 import {setUserCreator} from "../reducers/sign";

@@ -1,14 +1,14 @@
 import {getCookie} from "../../lib/utils/cookies";
 import {
-    SignAction,
-    SignActionTypes,
-    ISignState,
     IUser,
-    ISetUserAction,
+    SignAction,
+    ISignState,
     ISignInAction,
-    ISignInPayload, 
     ISignUpAction,
-    ISignUpPayload
+    ISetUserAction,
+    ISignInPayload, 
+    ISignUpPayload,
+    SignActionTypes
 } from "../../types/sign";
 
 const initialState: ISignState = {

@@ -1,8 +1,8 @@
 export enum SignActionTypes {
-    SET_USER = 'SET_USER',
     SIGN_IN = 'SIGN_IN',
     SIGN_UP = 'SIGN_UP',
-    SIGN_OUT = 'SIGN_OUT'
+    SIGN_OUT = 'SIGN_OUT',
+    SET_USER = 'SET_USER',
 }
 export interface IUser {
     userId: number | null,
@@ -11,32 +11,32 @@ export interface IUser {
     userEmail: string | null,
 }
 export interface ISignInPayload {
-    identifier: string,
-    password: string
+    password: string,
+    identifier: string
 }
 export interface ISignUpPayload {
-    username: string,
     email: string,
-    password: string
+    username: string,
+    password: string,
 }
 export interface ISignState {
-    loading: boolean,
-    user: IUser
+    user: IUser,
+    loading: boolean
 }
 export interface ISignInAction {
-    type: SignActionTypes.SIGN_IN,
-    payload: ISignInPayload
+    payload: ISignInPayload,
+    type: SignActionTypes.SIGN_IN
 }
 export interface ISignUpAction {
-    type: SignActionTypes.SIGN_UP,
-    payload: ISignUpPayload
+    payload: ISignUpPayload,
+    type: SignActionTypes.SIGN_UP
 }
 export interface ISetUserAction {
-    type: SignActionTypes.SET_USER,
-    payload: IUser
+    payload: IUser,
+    type: SignActionTypes.SET_USER
 }
 interface ISignOutAction {
-    type: SignActionTypes.SIGN_OUT,
+    type: SignActionTypes.SIGN_OUT
 }
 
 export type SignAction = ISignInAction | ISetUserAction | ISignOutAction | ISignUpAction
