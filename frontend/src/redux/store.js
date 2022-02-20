@@ -1,12 +1,12 @@
 import {rootWatcher} from "./sagas";
+import {rootReducer} from "./reducers";
 import createSagaMiddleware from 'redux-saga';
-import {signReducer} from "./reducers/signReducer";
-import {createStore, applyMiddleware, combineReducers, compose} from "redux";
+import {createStore, applyMiddleware, compose} from "redux";
 
 const sagaMiddleware = createSagaMiddleware()
 
 const store = createStore(
-    combineReducers({sign: signReducer}),
+    rootReducer,
     compose(applyMiddleware(sagaMiddleware), window.__REDUX_DEVTOOLS_EXTENSION__())
 )
 

@@ -1,9 +1,5 @@
 import {request} from "./useApi";
 
-export const signIn = async (identifier, password) => (
-    await request('POST', '/auth/local', {identifier, password})
-)
+export const signIn = data => request('POST', '/auth/local', data)
 
-export const signUp = async data => (
-    await request('POST', '/auth/local/register', data)
-)
+export const signUp = data => request('POST', '/auth/local/register', data)

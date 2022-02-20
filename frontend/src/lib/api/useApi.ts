@@ -1,11 +1,13 @@
-import rateLimit from 'axios-rate-limit';
 import axios from 'axios';
+import rateLimit from 'axios-rate-limit';
 
-const API_URL = "http://localhost:1337"
+type method = 'GET' | 'POST' | 'PUT' | 'DELETE'
+
+const API_URL: string = "http://localhost:1337"
 
 const instance = rateLimit(axios.create({baseURL: API_URL}), {maxRequests: 6, perMilliseconds: 1000})
 
-export const request = async (method, url, data = {}) => {
+export const request = async (method: method, url: string, data: object = {}) => {
     const headers = {
         // Authorization: `Bearer ${userAccessToken}`,
     }
@@ -15,8 +17,8 @@ export const request = async (method, url, data = {}) => {
             method,
             headers,
             url: `${API_URL}${url}`,
-            data: method === 'get' ? {} : data,
-            params: method === 'get' ? data : {},
+            data: method === 'POST' && data,
+            params: method === 'GET' && data,
         })
 
         return res.data
