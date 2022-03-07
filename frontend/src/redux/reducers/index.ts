@@ -5,4 +5,3 @@ export const rootReducer = combineReducers({
     sign: sign
 })
 
-export type RootReducer = ReturnType<typeof rootReducer>
