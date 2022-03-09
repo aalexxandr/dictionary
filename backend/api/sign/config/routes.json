@@ -1,0 +1,20 @@
+{
+  "routes": [
+    {
+      "method": "POST",
+      "path": "/sign/signIn",
+      "handler": "sign.signIn",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/sign/signUp",
+      "handler": "sign.signUp",
+      "config": {
+        "policies": []
+      }
+    }
+  ]
+}
