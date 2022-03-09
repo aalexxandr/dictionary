@@ -11,7 +11,6 @@ module.exports = {
       const {statusCode} = error.response.data
 
       ctx.send({
-        statusCode,
         data: null,
       }, statusCode)
     }
@@ -27,7 +26,6 @@ module.exports = {
       const {statusCode} = error.response.data
 
       ctx.send({
-        statusCode,
         data: null,
       }, statusCode)
     }
