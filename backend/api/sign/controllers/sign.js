@@ -10,9 +10,7 @@ module.exports = {
     } catch (error) {
       const {statusCode} = error.response.data
 
-      ctx.send({
-        data: null,
-      }, statusCode)
+      ctx.send({}, statusCode)
     }
   },
 
@@ -25,9 +23,7 @@ module.exports = {
     } catch (error) {
       const {statusCode} = error.response.data
 
-      ctx.send({
-        data: null,
-      }, statusCode)
+      ctx.send({}, statusCode)
     }
   }
 }
