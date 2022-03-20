@@ -1,12 +1,12 @@
 import {FC} from "react";
-import {Row, } from "antd";
-import style from "./style.module.scss";
+import Grid from "@mui/material/Grid";
+import styles from "./style.module.scss";
 
 const CenterWrapper:FC = ({children}) => {
     return (
-        <Row justify="center" align="middle" className={style.wrapper}>
+        <Grid className={styles.wrapper} justifyContent="center" container>
             {children}
-        </Row>
+        </Grid>
     )
 }
 

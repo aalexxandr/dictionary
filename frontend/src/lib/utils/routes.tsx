@@ -1,6 +1,6 @@
-import SignIn from "../../components/SignIn";
-import SignUp from "../../components/SignUp";
 import {IRoutes} from "../../types/AppRouter";
+import SignIn from "../../components/Sign/SignIn";
+import SignUp from "../../components/Sign/SignUp";
 import Dictionary from "../../components/Dictionary";
 
 export const routes: IRoutes = [

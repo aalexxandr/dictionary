@@ -1,8 +1,8 @@
 import {FC} from "react";
 import {useDispatch} from "react-redux";
 import {useForm} from "react-hook-form";
-import {signUpCreator} from "../../redux/reducers/sign";
-import {ISignUpPayload} from "../../types/sign";
+import {ISignUpPayload} from "../../../types/sign";
+import {signUpCreator} from "../../../redux/reducers/sign";
 
 const SignUp:FC = () => {
     const dispatch = useDispatch()

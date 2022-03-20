@@ -1,15 +1,16 @@
 import {AxiosError} from "axios";
-import {message} from "antd";
+import {toast} from "react-toastify";
 
-export const errorHandler = (error: AxiosError, errors: {}) => {
-    if (error.response) {
-        const {status} = error.response
 
-        Object.keys(errors).forEach((error) => {
-            if (status === parseInt(error))
-                message.error(errors[error as keyof {}])
-        })
-    } else {
-        message.error('Упс... Что-то пошло не так')
-    }
+const errorHandler = (error: AxiosError, errors: {}) => {
+    const status = error.response?.status
+
+    Object.keys(errors).forEach((error) => {
+        if (status === parseInt(error))
+            toast.error(errors[error as keyof {}])
+        else
+            toast('Упс... Что-то пошло не так')
+    })
 }
+
+export default errorHandler
