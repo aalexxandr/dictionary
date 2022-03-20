@@ -3,7 +3,7 @@ import {setUserCreator} from "../reducers/sign";
 import {signIn, signUp} from "../../lib/api/sign";
 import {takeLeading, put} from "redux-saga/effects";
 import errorHandler from "../../lib/utils/helpers/api";
-import {removeCookie, setCookie} from "../../lib/utils/cookies";
+import {removeCookie, setCookie, setShortCookie} from "../../lib/utils/cookies";
 import {IUser, SignActionTypes, ISignUpAction, ISignInAction} from "../../types/sign";
 
 /* sagas workers */
@@ -16,6 +16,8 @@ function* signInWorker({payload}:ISignInAction) {
 
         if (remember)
             Object.keys(result.data).forEach( key => setCookie(key, result.data[key as keyof IUser]) )
+        else
+            Object.keys(result.data).forEach( key => setShortCookie(key, result.data[key as keyof IUser]) )
 
         yield put(setUserCreator(result.data))
     } catch (e) {
