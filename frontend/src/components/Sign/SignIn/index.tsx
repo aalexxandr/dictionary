@@ -1,18 +1,17 @@
 import {FC} from "react";
 import {Link} from "react-router-dom";
 import {useDispatch} from "react-redux";
-import {useForm} from "react-hook-form";
 import styles from "../style.module.scss";
-import TextField from "@mui/material/TextField";
 import {ISignInPayload} from "../../../types/sign";
-import {Grid, Typography, Button} from "@mui/material";
+import {useForm, Controller} from "react-hook-form";
 import CenterWrapper from "../../generic/CenterWrapper";
 import {signInCreator} from "../../../redux/reducers/sign";
+import {Grid, Typography, Button, FormControlLabel, TextField, Checkbox} from "@mui/material";
 
 const SignIn:FC = () => {
     const dispatch = useDispatch()
 
-    const {handleSubmit, register, formState: { errors }} = useForm()
+    const {handleSubmit, register, control, formState: { errors }} = useForm()
 
     const login = (data: ISignInPayload) => {
         dispatch(signInCreator(data))
@@ -37,6 +36,16 @@ const SignIn:FC = () => {
                     <TextField type="password" label="Пароль" fullWidth className={styles.signInput} variant="standard"
                                error={!!errors.password} helperText={errors.password?.message}
                                inputProps={{ ...register('password', {required: 'Введите пароль'}) }}
+                    />
+                    <Controller
+                        control={control}
+                        name="remember"
+                        defaultValue={true}
+                        render={({ field: { onChange, value}}) => (
+                            <FormControlLabel control={<Checkbox defaultChecked value={value} onChange={onChange} />}
+                                label="Запомнить меня"
+                            />
+                        )}
                     />
                     <Button type="submit" className={styles.signButton} variant="outlined" size="large" fullWidth>
                         Войти

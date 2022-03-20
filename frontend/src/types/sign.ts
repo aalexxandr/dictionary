@@ -18,7 +18,12 @@ export interface IUserState {
 }
 export interface ISignInPayload {
     password: string,
-    identifier: string
+    identifier: string,
+    remember: boolean,
+}
+export interface ISignInApi {
+    password: string,
+    identifier: string,
 }
 export interface ISignUpPayload {
     email: string,

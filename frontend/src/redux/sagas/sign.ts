@@ -10,11 +10,12 @@ import {IUser, SignActionTypes, ISignUpAction, ISignInAction} from "../../types/
 
 function* signInWorker({payload}:ISignInAction) {
     try {
-        const {identifier, password} = payload
+        const {identifier, password, remember} = payload
 
         const result:AxiosResponse = yield signIn({identifier, password})
 
-        Object.keys(result.data).forEach( key => setCookie(key, result.data[key as keyof IUser]) )
+        if (remember)
+            Object.keys(result.data).forEach( key => setCookie(key, result.data[key as keyof IUser]) )
 
         yield put(setUserCreator(result.data))
     } catch (e) {
