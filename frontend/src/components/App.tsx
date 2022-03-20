@@ -1,19 +1,24 @@
-import "antd/dist/antd.css";
+import "./style.scss";
 import React, {FC} from 'react';
-import SignIn from "./SignIn/index";
-import Profile from "./Profile/index";
+import AppRouter from "./AppRouter";
 import {ToastContainer} from "react-toastify";
+import 'react-toastify/dist/ReactToastify.css';
 import {useTypedSelector} from "../lib/hooks/useTypesSelector";
 
 const App:FC = () => {
     const signStore = useTypedSelector(store => store.sign)
 
     return <>
-        {signStore.user?.userName
-            ? <Profile userName={signStore.user?.userName} />
-            : <SignIn />
-        }
-        <ToastContainer hideProgressBar />
+        <AppRouter userId={signStore.user.userId} />
+
+        <ToastContainer
+            position="top-right"
+            autoClose={5000}
+            closeOnClick
+            pauseOnFocusLoss
+            draggable
+            pauseOnHover
+        />
     </>
 }
 
