@@ -22,6 +22,11 @@ export interface ISignInPayload {
     identifier: string,
     remember: boolean,
 }
+export interface ISignUpApi {
+    username: string,
+    email: string,
+    password: string,
+}
 export interface ISignInApi {
     password: string,
     identifier: string,
@@ -30,6 +35,7 @@ export interface ISignUpPayload {
     email: string,
     username: string,
     password: string,
+    remember: boolean,
 }
 export interface ISignState {
     user: IUserState,

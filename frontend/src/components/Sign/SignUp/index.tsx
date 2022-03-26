@@ -30,19 +30,20 @@ const SignUp:FC = () => {
                     </Typography>
                 </Grid>
                 <TextField label="Логин" fullWidth className={styles.signInput} variant="standard"
-                           error={!!errors.username} helperText={errors.username?.message}
+                           error={!!errors.username}
+                           helperText={errors.username && (errors.username.message || 'Недопустимые символы')}
                            inputProps={{ ...register('username', {
-                               required: 'Введите логин'
+                               required: 'Введите логин',
+                               pattern: /^[a-zA-Z0-9_-]+$/
                            }) }}
                 />
                 <TextField label="Почта" fullWidth className={styles.signInput} variant="standard"
-                           error={!!errors.email} helperText={
-                                errors.email && (errors.email.message || 'Введите корректную почту')
-                            }
+                           error={!!errors.email}
+                           helperText={errors.email && (errors.email.message || 'Введите корректную почту')}
                            inputProps={{ ...register('email', {
                                 required: 'Введите почту',
                                 pattern: /\S+@\S+\.\S+/
-                            }) }}
+                           }) }}
                 />
                 <TextField type="password" label="Пароль" fullWidth className={styles.signInput} variant="standard"
                            error={!!errors.password}
