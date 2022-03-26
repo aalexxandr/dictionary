@@ -2,13 +2,17 @@ import {FC} from "react";
 import {Link} from "react-router-dom";
 import {useDispatch} from "react-redux";
 import styles from "../style.module.scss";
+import LoadingButton from "@mui/lab/LoadingButton";
 import {ISignInPayload} from "../../../types/sign";
 import {useForm, Controller} from "react-hook-form";
 import CenterWrapper from "../../generic/CenterWrapper";
 import {signInCreator} from "../../../redux/reducers/sign";
+import {useTypedSelector} from "../../../lib/hooks/useTypesSelector";
 import {Grid, Typography, Button, FormControlLabel, TextField, Checkbox} from "@mui/material";
 
 const SignIn:FC = () => {
+    const signStore = useTypedSelector(store => store.sign)
+
     const dispatch = useDispatch()
 
     const {handleSubmit, register, control, formState: { errors }} = useForm()
@@ -47,9 +51,10 @@ const SignIn:FC = () => {
                             />
                         )}
                     />
-                    <Button type="submit" className={styles.signButton} variant="outlined" size="large" fullWidth>
+                    <LoadingButton type="submit" className={styles.signButton} variant="outlined" size="large" fullWidth
+                                    loading={signStore.loading}>
                         Войти
-                    </Button>
+                    </LoadingButton>
                     <Button className={styles.signButton} variant="contained" size="large" fullWidth>
                         <Link to="/register">Зарегистрироваться</Link>
                     </Button>

@@ -1,5 +1,5 @@
 import {AxiosError, AxiosResponse} from "axios";
-import {setUserCreator} from "../reducers/sign";
+import {setUserCreator, toggleLoadingCreator} from "../reducers/sign";
 import {signIn, signUp} from "../../lib/api/sign";
 import {takeLeading, put} from "redux-saga/effects";
 import errorHandler from "../../lib/utils/helpers/api";
@@ -10,6 +10,7 @@ import {IUser, SignActionTypes, ISignUpAction, ISignInAction} from "../../types/
 
 function* signInWorker({payload}:ISignInAction) {
     try {
+        yield put(toggleLoadingCreator(true))
         const {identifier, password, remember} = payload
 
         const result:AxiosResponse = yield signIn({identifier, password})
@@ -25,6 +26,8 @@ function* signInWorker({payload}:ISignInAction) {
         errorHandler(error, {
             400: 'Такого пользователя не существует'
         })
+    } finally {
+        yield put(toggleLoadingCreator(false))
     }
 }
 

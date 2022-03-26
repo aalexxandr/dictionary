@@ -3,6 +3,7 @@ export enum SignActionTypes {
     SIGN_UP = 'SIGN_UP',
     SIGN_OUT = 'SIGN_OUT',
     SET_USER = 'SET_USER',
+    TOGGLE_LOADING = 'TOGGLE_LOADING',
 }
 export interface IUser {
     userId: number,
@@ -49,5 +50,9 @@ export interface ISetUserAction {
 interface ISignOutAction {
     type: SignActionTypes.SIGN_OUT
 }
+export interface IToggleLoadingAction {
+    payload: boolean
+    type: SignActionTypes.TOGGLE_LOADING,
+}
 
-export type SignAction = ISignInAction | ISetUserAction | ISignOutAction | ISignUpAction
+export type SignAction = ISignInAction | ISetUserAction | ISignOutAction | ISignUpAction | IToggleLoadingAction
