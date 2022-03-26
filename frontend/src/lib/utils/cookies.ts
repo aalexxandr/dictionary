@@ -20,4 +20,4 @@ export const removeCookie = (key:string) => {
     })
 }
 
-export const getCookie = (key:string):string | null => cookie.get(key.toString()) || null
+export const getCookie = (key:string):string | undefined => cookie.get(key)

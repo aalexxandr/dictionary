@@ -34,7 +34,7 @@ function* signUpWorker({payload}:ISignUpAction) {
 
         const result: IUser = yield signUp({username, email, password})
 
-        yield Object.keys(result).map( key => setCookie(key, result[key as keyof IUser]) )
+        yield Object.keys(result).map( key => setCookie(key, result[key as keyof IUser].toString()) )
 
         yield put(setUserCreator(result))
     } catch (error) {

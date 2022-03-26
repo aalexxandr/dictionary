@@ -14,7 +14,7 @@ import {
 const initialState: ISignState = {
     loading: false,
     user: {
-        userId: getCookie('userId'),
+        userId: Number(getCookie('userId')),
         userJwt: getCookie('userJwt'),
         userName: getCookie('userName'),
         userEmail: getCookie('userEmail'),
@@ -39,10 +39,10 @@ export const sign = (state = initialState, action: SignAction): ISignState => {
             return {
                 ...state,
                 user: {
-                    userId: null,
-                    userJwt: null,
-                    userName: null,
-                    userEmail: null,
+                    userId: undefined,
+                    userJwt: undefined,
+                    userName: undefined,
+                    userEmail: undefined,
                 },
             }
         }

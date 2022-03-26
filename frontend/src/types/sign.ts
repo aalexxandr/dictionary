@@ -5,16 +5,16 @@ export enum SignActionTypes {
     SET_USER = 'SET_USER',
 }
 export interface IUser {
-    userId: string,
+    userId: number,
     userJwt: string,
     userName: string,
     userEmail: string,
 }
 export interface IUserState {
-    userId: string | null,
-    userJwt: string | null,
-    userName: string | null,
-    userEmail: string | null,
+    userId: number | undefined,
+    userJwt: string | undefined,
+    userName: string | undefined,
+    userEmail: string | undefined,
 }
 export interface ISignInPayload {
     password: string,
