@@ -22,45 +22,44 @@ const SignIn:FC = () => {
     }
 
     return (
-        <>
-            <CenterWrapper>
-                <form onSubmit={handleSubmit(login)} className={styles.signForm}>
-                    <Grid container justifyContent="center">
-                        <Typography variant="h4" gutterBottom className={styles.pageTitle}>
-                            Авторизация
-                        </Typography>
-                    </Grid>
-                    <TextField label="Логин или почта" fullWidth className={styles.signInput} variant="standard"
-                               error={!!errors.identifier} helperText={errors.identifier?.message}
-                               inputProps={{ ...register('identifier', {
-                                       required: 'Введите логин или почту'
-                                   }
-                               ) }}
-                    />
-                    <TextField type="password" label="Пароль" fullWidth className={styles.signInput} variant="standard"
-                               error={!!errors.password} helperText={errors.password?.message}
-                               inputProps={{ ...register('password', {required: 'Введите пароль'}) }}
-                    />
-                    <Controller
-                        control={control}
-                        name="remember"
-                        defaultValue={true}
-                        render={({ field: { onChange, value}}) => (
-                            <FormControlLabel control={<Checkbox defaultChecked value={value} onChange={onChange} />}
-                                label="Запомнить меня"
-                            />
-                        )}
-                    />
-                    <LoadingButton type="submit" className={styles.signButton} variant="outlined" size="large" fullWidth
-                                    loading={signStore.loading}>
-                        Войти
-                    </LoadingButton>
+        <CenterWrapper>
+            <form onSubmit={handleSubmit(login)} className={styles.signForm}>
+                <Grid container justifyContent="center">
+                    <Typography variant="h4" gutterBottom className={styles.pageTitle}>
+                        Авторизация
+                    </Typography>
+                </Grid>
+                <TextField label="Логин или почта" fullWidth className={styles.signInput} variant="standard"
+                           error={!!errors.identifier} helperText={errors.identifier?.message}
+                           inputProps={{ ...register('identifier', {
+                               required: 'Введите логин или почту'
+                           }) }}
+                />
+                <TextField type="password" label="Пароль" fullWidth className={styles.signInput} variant="standard"
+                           error={!!errors.password} helperText={errors.password?.message}
+                           inputProps={{ ...register('password', {required: 'Введите пароль'}) }}
+                />
+                <Controller
+                    control={control}
+                    name="remember"
+                    defaultValue={true}
+                    render={({ field: { onChange, value}}) => (
+                        <FormControlLabel control={<Checkbox defaultChecked value={value} onChange={onChange} />}
+                            label="Запомнить меня"
+                        />
+                    )}
+                />
+                <LoadingButton type="submit" className={styles.signButton} variant="outlined" size="large" fullWidth
+                                loading={signStore.loading}>
+                    Войти
+                </LoadingButton>
+                <Link to="/register">
                     <Button className={styles.signButton} variant="contained" size="large" fullWidth>
-                        <Link to="/register">Зарегистрироваться</Link>
+                        Зарегистрироваться
                     </Button>
-                </form>
-            </CenterWrapper>
-        </>
+                </Link>
+            </form>
+        </CenterWrapper>
     )
 }
 
