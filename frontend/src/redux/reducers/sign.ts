@@ -3,18 +3,19 @@ import {
     IUser,
     SignAction,
     ISignState,
-    ISignInAction,
     ISignUpAction,
+    ISignInAction,
     ISetUserAction,
-    ISignInPayload, 
+    ISignInPayload,
     ISignUpPayload,
-    SignActionTypes
+    SignActionTypes,
+    IToggleLoadingAction,
 } from "../../types/sign";
 
 const initialState: ISignState = {
     loading: false,
     user: {
-        userId: getCookie('userId'),
+        userId: Number(getCookie('userId')),
         userJwt: getCookie('userJwt'),
         userName: getCookie('userName'),
         userEmail: getCookie('userEmail'),
@@ -23,6 +24,12 @@ const initialState: ISignState = {
 
 export const sign = (state = initialState, action: SignAction): ISignState => {
     switch (action.type) {
+        case SignActionTypes.TOGGLE_LOADING: {
+            return {
+                ...state,
+                loading: action.payload
+            }
+        }
         case SignActionTypes.SET_USER: {
             const {userId, userJwt, userName, userEmail} = action.payload
             return {
@@ -39,10 +46,10 @@ export const sign = (state = initialState, action: SignAction): ISignState => {
             return {
                 ...state,
                 user: {
-                    userId: null,
-                    userJwt: null,
-                    userName: null,
-                    userEmail: null,
+                    userId: undefined,
+                    userJwt: undefined,
+                    userName: undefined,
+                    userEmail: undefined,
                 },
             }
         }
@@ -52,6 +59,11 @@ export const sign = (state = initialState, action: SignAction): ISignState => {
     }
 }
 
-export const signInCreator = (payload:ISignInPayload):ISignInAction => ({type: SignActionTypes.SIGN_IN, payload})
-export const signUpCreator = (payload:ISignUpPayload):ISignUpAction => ({type: SignActionTypes.SIGN_UP, payload})
-export const setUserCreator = (payload:IUser):ISetUserAction => ({type: SignActionTypes.SET_USER, payload})
+export const signInCreator = (payload:ISignInPayload):ISignInAction =>
+    ({type: SignActionTypes.SIGN_IN, payload})
+export const signUpCreator = (payload:ISignUpPayload):ISignUpAction =>
+    ({type: SignActionTypes.SIGN_UP, payload})
+export const setUserCreator = (payload:IUser):ISetUserAction =>
+    ({type: SignActionTypes.SET_USER, payload})
+export const toggleLoadingCreator = (payload: boolean):IToggleLoadingAction =>
+    ({type: SignActionTypes.TOGGLE_LOADING, payload})

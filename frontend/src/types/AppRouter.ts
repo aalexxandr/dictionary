@@ -3,7 +3,7 @@ import {FC} from "react";
 export type RouterType = 'authorized' | 'unauthorized'
 
 export type AppRouterProps = {
-    userId: string | null
+    userId: number | undefined
 }
 
 export interface IRoute {

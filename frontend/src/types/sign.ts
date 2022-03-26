@@ -3,27 +3,39 @@ export enum SignActionTypes {
     SIGN_UP = 'SIGN_UP',
     SIGN_OUT = 'SIGN_OUT',
     SET_USER = 'SET_USER',
+    TOGGLE_LOADING = 'TOGGLE_LOADING',
 }
 export interface IUser {
-    userId: string,
+    userId: number,
     userJwt: string,
     userName: string,
     userEmail: string,
 }
 export interface IUserState {
-    userId: string | null,
-    userJwt: string | null,
-    userName: string | null,
-    userEmail: string | null,
+    userId: number | undefined,
+    userJwt: string | undefined,
+    userName: string | undefined,
+    userEmail: string | undefined,
 }
 export interface ISignInPayload {
     password: string,
-    identifier: string
+    identifier: string,
+    remember: boolean,
+}
+export interface ISignUpApi {
+    username: string,
+    email: string,
+    password: string,
+}
+export interface ISignInApi {
+    password: string,
+    identifier: string,
 }
 export interface ISignUpPayload {
     email: string,
     username: string,
     password: string,
+    remember: boolean,
 }
 export interface ISignState {
     user: IUserState,
@@ -44,5 +56,9 @@ export interface ISetUserAction {
 interface ISignOutAction {
     type: SignActionTypes.SIGN_OUT
 }
+export interface IToggleLoadingAction {
+    payload: boolean
+    type: SignActionTypes.TOGGLE_LOADING,
+}
 
-export type SignAction = ISignInAction | ISetUserAction | ISignOutAction | ISignUpAction
+export type SignAction = ISignInAction | ISetUserAction | ISignOutAction | ISignUpAction | IToggleLoadingAction

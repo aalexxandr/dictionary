@@ -1,36 +1,51 @@
-import {setUserCreator} from "../reducers/sign";
+import {AxiosError, AxiosResponse} from "axios";
 import {signIn, signUp} from "../../lib/api/sign";
 import {takeLeading, put} from "redux-saga/effects";
-import {removeCookie, setCookie} from "../../lib/utils/cookies";
-import {IUser, SignActionTypes, ISignUpAction, ISignInAction} from "../../types/sign";
+import {removeCookie} from "../../lib/utils/cookies";
+import errorHandler from "../../lib/utils/helpers/api";
+import {setUserCookie} from "../../lib/utils/helpers/sign";
+import {setUserCreator, toggleLoadingCreator} from "../reducers/sign";
+import {SignActionTypes, ISignUpAction, ISignInAction} from "../../types/sign";
 
 /* sagas workers */
 
 function* signInWorker({payload}:ISignInAction) {
     try {
-        const {identifier, password} = payload
+        yield put(toggleLoadingCreator(true))
 
-        const result: IUser = yield signIn({identifier, password})
+        const {identifier, password, remember} = payload
+        const result:AxiosResponse = yield signIn({identifier, password})
 
-        Object.keys(result).forEach( key => setCookie(key, result[key as keyof IUser]) )
+        setUserCookie(remember, result.data)
 
-        yield put(setUserCreator(result))
-    } catch (error) {
-        // TODO handle error
+        yield put(setUserCreator(result.data))
+    } catch (e) {
+        const error = e as AxiosError
+        errorHandler(error, {
+            400: 'Такого пользователя не существует'
+        })
+    } finally {
+        yield put(toggleLoadingCreator(false))
     }
 }
 
 function* signUpWorker({payload}:ISignUpAction) {
     try {
-        const {username, email, password} = payload
+        yield put(toggleLoadingCreator(true))
 
-        const result: IUser = yield signUp({username, email, password})
+        const {username, email, password, remember} = payload
+        const result:AxiosResponse = yield signUp({username, email, password})
 
-        yield Object.keys(result).map( key => setCookie(key, result[key as keyof IUser]) )
+        setUserCookie(remember, result.data)
 
-        yield put(setUserCreator(result))
-    } catch (error) {
-        // TODO handle error
+        yield put(setUserCreator(result.data))
+    } catch (e) {
+        const error = e as AxiosError
+        errorHandler(error, {
+            400: 'Такой пользователь уже существует'
+        })
+    } finally {
+        yield put(toggleLoadingCreator(false))
     }
 }
 
