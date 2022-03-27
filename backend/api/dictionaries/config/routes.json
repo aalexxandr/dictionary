@@ -2,48 +2,48 @@
   "routes": [
     {
       "method": "GET",
-      "path": "/words/:dictionaryId",
-      "handler": "words.find",
+      "path": "/dictionaries",
+      "handler": "dictionaries.find",
       "config": {
         "policies": []
       }
     },
     {
       "method": "GET",
-      "path": "/words/count",
-      "handler": "words.count",
+      "path": "/dictionaries/count",
+      "handler": "dictionaries.count",
       "config": {
         "policies": []
       }
     },
     {
       "method": "GET",
-      "path": "/words/:id",
-      "handler": "words.findOne",
+      "path": "/dictionaries/:id",
+      "handler": "dictionaries.findOne",
       "config": {
         "policies": []
       }
     },
     {
       "method": "POST",
-      "path": "/words",
-      "handler": "words.create",
+      "path": "/dictionaries",
+      "handler": "dictionaries.create",
       "config": {
         "policies": []
       }
     },
     {
       "method": "PUT",
-      "path": "/words/:dictionaryId/:wordId",
-      "handler": "words.update",
+      "path": "/dictionaries/:dictionaryId",
+      "handler": "dictionaries.update",
       "config": {
         "policies": []
       }
     },
     {
       "method": "DELETE",
-      "path": "/words/:dictionaryId/:wordId",
-      "handler": "words.delete",
+      "path": "/dictionaries/:dictionaryId",
+      "handler": "dictionaries.delete",
       "config": {
         "policies": []
       }

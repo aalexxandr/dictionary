@@ -59,9 +59,17 @@
       "plugin": "users-permissions",
       "configurable": false
     },
-    "words": {
-      "via": "user",
-      "collection": "words"
+    "dictionaries_edit": {
+      "via": "editors",
+      "collection": "dictionaries"
+    },
+    "dictionaries_view": {
+      "via": "viewers",
+      "collection": "dictionaries"
+    },
+    "dictionaries_own": {
+      "via": "owner",
+      "collection": "dictionaries"
     }
   }
 }

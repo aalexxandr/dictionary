@@ -20,10 +20,9 @@
     "translation": {
       "type": "string"
     },
-    "user": {
-      "plugin": "users-permissions",
-      "model": "user",
-      "via": "words"
+    "dictionary": {
+      "via": "words",
+      "model": "dictionaries"
     }
   }
 }

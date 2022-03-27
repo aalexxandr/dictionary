@@ -1,4 +1,5 @@
 'use strict';
+
 const {sanitizeEntity} = require("strapi-utils");
 
 /**
@@ -7,10 +8,5 @@ const {sanitizeEntity} = require("strapi-utils");
  */
 
 module.exports = {
-  sanitizeWord: (word) => sanitizeEntity(word, {model: strapi.models.words}),
-
-  isDictionaryEditor: async (dictionaryId, userId) => !!await strapi.services.dictionaries.findOne({
-    id: dictionaryId,
-    editors_contains: userId,
-  })
+  sanitizeDictionary: (dictionary) => sanitizeEntity(dictionary, {model: strapi.models.dictionaries})
 };
