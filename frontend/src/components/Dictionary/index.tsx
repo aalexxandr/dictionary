@@ -1,8 +1,9 @@
 import {FC} from "react";
+import Drawer from "./Drawer";
 
-const Dictionary: FC = () => {
+const Dictionary:FC = () => {
     return <>
-        Dictionary
+        <Drawer />
     </>
 }
 

@@ -1,0 +1,39 @@
+.drawer {
+  .drawerButton {
+    margin: 0 10px;
+    height: 40px;
+    .drawerButtonIcon {
+      &:before {
+        content: '';
+        display: block;
+        width: 20px;
+        height: 1px;
+        top: 5px;
+        position: relative;
+        background: black;
+        transition: transform 0.3s, top 0.3s;
+      }
+      &:after {
+        content: '';
+        display: block;
+        width: 20px;
+        height: 1px;
+        top: -4px;
+        position: relative;
+        background: black;
+        transition: transform 0.3s, top 0.3s;
+      }
+      &.active {
+        &:after {
+          transform: rotate(45deg);
+          top: -1px;
+        }
+        &:before {
+          transform: rotate(-45deg);
+          top: 0;
+        }
+      }
+    }
+  }
+}
+
