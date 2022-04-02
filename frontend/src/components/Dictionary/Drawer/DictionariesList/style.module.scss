@@ -1,0 +1,15 @@
+.dictionariesList {
+    .expand {
+        transition: transform 0.3s;
+    }
+    .opened {
+        transform: rotate(180deg);
+    }
+    .visibilityTransition {
+        opacity: 1;
+        transition: opacity 0.3s;
+    }
+    .hidden {
+        opacity: 0;
+    }
+}
